@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-bool FuzzMe(const uint8_t *Data, size_t DataSize) {
+bool vulncode(const uint8_t *Data, size_t DataSize) {
   return DataSize >= 3 &&
       Data[0] == 'F' &&
       Data[1] == 'U' &&
@@ -10,6 +10,6 @@ bool FuzzMe(const uint8_t *Data, size_t DataSize) {
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
-  FuzzMe(Data, Size);
+  vulncode(Data, Size);
   return 0;
 }
